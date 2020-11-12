@@ -20,11 +20,23 @@
       "supportsTablet": true
     },
     "android": {
+      "package":"com.dgazcondev.pideloya",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAJ2AtgddlHYZ-dWaBqBf_cwvOfn94H79o"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "permissions":["CAMERA_ROLL","READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
+      "permissions":[
+        "CAMERA_ROLL",
+        "READ_EXTERNAL_STORAGE", 
+        "WRITE_EXTERNAL_STORAGE", 
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
