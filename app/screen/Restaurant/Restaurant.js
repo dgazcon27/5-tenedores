@@ -2,10 +2,10 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 import { StyleSheet, View, Text } from "react-native";
 import { Icon } from "react-native-elements";
+import Toast from "react-native-easy-toast";
 import { firebaseApp } from "../../../utils/firebase";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import Toast from "react-native-easy-toast";
 import ListRestaurants from "../../components/Restaurant/ListRestaurants";
 
 const db = firebase.firestore(firebaseApp);

@@ -32,7 +32,7 @@ export default function LoginForm(props) {
         .signInWithEmailAndPassword(form.email, form.password)
         .then((response) => {
           setLoading(false);
-          navigation.navigate("accounts");
+          navigation.navigate("restaurant");
         })
         .catch((e) => {
           setLoading(false);

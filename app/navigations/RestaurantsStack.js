@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Restaurant from "../screen/Restaurant/Restaurant";
 import AddRestaurant from "../screen/Restaurant/AddRestaurant";
 import RestaurantDetail from "../screen/Restaurant/RestaurantDetail";
+import AddReviewRestaurant from "../screen/Restaurant/AddReviewRestaurant";
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,11 @@ export default function RestaurantsStack() {
         options={{ title: "Agregar Restaurante" }}
       />
       <Stack.Screen component={RestaurantDetail} name="detail-restaurant" />
+      <Stack.Screen
+        component={AddReviewRestaurant}
+        name="add-review-restaurant"
+        options={{ title: "Comentarios" }}
+      />
     </Stack.Navigator>
   );
 }

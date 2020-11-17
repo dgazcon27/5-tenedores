@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { StyleSheet, Text, View, ScrollView, Dimensions } from "react-native";
 import { Rating, ListItem, Icon } from "react-native-elements";
 
@@ -6,11 +6,13 @@ import { firebaseApp } from "../../../utils/firebase";
 import firebase from "firebase/app";
 import "firebase/storage";
 import "firebase/firestore";
+import { map } from "lodash";
+import { useFocusEffect } from "@react-navigation/native";
 
 import Loading from "../../components/Loading";
 import CarouselImage from "../../components/Carousel";
 import Map from "../../components/Map";
-import { map } from "lodash";
+import ListReviews from "../../components/Restaurant/ListReviews";
 
 const db = firebase.firestore(firebaseApp);
 const widthScreen = Dimensions.get("window").width;
@@ -24,33 +26,23 @@ export default function RestaurantDetail(props) {
     navigation.setOptions({ title: name });
   }, []);
 
-  useEffect(() => {
-    let isCancelled = false;
-    const getRestaurant = () => {
+  useFocusEffect(
+    useCallback(() => {
       db.collection("restaurant")
         .doc(id)
         .get()
         .then((response) => {
           const data = response.data();
           data.id = response.id;
-          if (!isCancelled) {
-            setRestaurant(data);
-          }
+          setRestaurant(data);
         })
         .catch((er) => {
           console.log(er);
         });
-    };
-
-    getRestaurant();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, []);
+    }, [])
+  );
 
   function TitleRestaurant({ name, description, rating }) {
-    console.log(rating);
     return (
       <View style={styles.viewTitle}>
         <View style={{ flexDirection: "row" }}>
@@ -115,6 +107,7 @@ export default function RestaurantDetail(props) {
           name={restaurant.name}
           address={restaurant.address}
         />
+        <ListReviews navigation={navigation} idRestaurant={restaurant.id} />
       </ScrollView>
     );
   }
