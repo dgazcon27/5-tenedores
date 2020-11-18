@@ -13,7 +13,7 @@ export default function ListReviews(props) {
 
   const [userLogged, setUserLogged] = useState(false);
   const [reviews, setReviews] = useState(null);
-  console.log(reviews);
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       user ? setUserLogged(true) : setUserLogged(false);
