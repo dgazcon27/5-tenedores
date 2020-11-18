@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
 import { isEmpty, size } from "lodash";
@@ -14,6 +14,13 @@ export default function LoginForm(props) {
   const [form, setForm] = useState(initializeData());
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      user && navigation.navigate("accounts");
+    });
+  }, []);
 
   const onChange = (e, type) => {
     let value = e.nativeEvent.text;

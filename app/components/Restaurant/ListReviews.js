@@ -91,7 +91,7 @@ export default function ListReviews(props) {
         />
       ) : (
         <Text
-          onPress={() => navigation.navigate("login")}
+          onPress={() => navigation.navigate("accounts", { screen: "login" })}
           style={{
             textAlign: "center",
             color: "#00a680",
