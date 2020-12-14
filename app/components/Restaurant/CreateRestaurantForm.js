@@ -21,7 +21,7 @@ export default function CreateRestaurantForm(props) {
   const { toastRef, setLoading, navigation, setTextLoader } = props;
   const [form, setForm] = useState(initialData());
   const [imageList, setImageList] = useState([]);
-  const [restaurantLocation, setRestaurantLocation] = useState(null);
+  const [restaurantLocation, setRestaurantLocation] = useState(initLocation());
   const [isVisibleMap, setisVisibleMap] = useState(false);
 
   const onChange = (e, type) => {
@@ -55,11 +55,6 @@ export default function CreateRestaurantForm(props) {
       toastRef.current.show("El restaurant debe poseer un nombre");
     } else if (!form.address) {
       toastRef.current.show("El restaurant debe poseer un direccion");
-    } else if (!restaurantLocation) {
-      toastRef.current.show(
-        "Debe seleccionar una ubicación para el restaurant",
-        2000
-      );
     } else if (!form.description) {
       toastRef.current.show("El restaurant debe poseer una descripción");
     } else if (size(imageList) === 0) {
@@ -82,9 +77,9 @@ export default function CreateRestaurantForm(props) {
               quantityVoting: 0,
               createAt: new Date(),
               createBy: firebase.auth().currentUser.uid,
+              seeker: form.name.toLowerCase(),
             })
             .then((response) => {
-              console.log(response);
               setLoading(false);
               toastRef.current.show(
                 "Restaurant creado exitosamente",
@@ -334,6 +329,15 @@ function initialData() {
     name: "",
     address: "",
     description: "",
+  };
+}
+
+function initLocation() {
+  return {
+    latitude: 0,
+    longitude: 0,
+    longitudeDelta: 0,
+    latitudeDelta: 0,
   };
 }
 

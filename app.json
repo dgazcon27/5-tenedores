@@ -8,7 +8,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#00a680"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -20,7 +20,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package":"com.dgazcondev.pideloya",
+      "package": "com.dgazcondev.pideloya",
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyAJ2AtgddlHYZ-dWaBqBf_cwvOfn94H79o"
@@ -30,10 +30,10 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "permissions":[
+      "permissions": [
         "CAMERA_ROLL",
-        "READ_EXTERNAL_STORAGE", 
-        "WRITE_EXTERNAL_STORAGE", 
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION"
       ]

@@ -12,7 +12,6 @@ export default function TopRestaurant(props) {
   const { navigation } = props;
   const [restaurants, setRestaurants] = useState([]);
   const toastRef = useRef();
-  console.log(restaurants);
   useEffect(() => {
     db.collection("restaurant")
       .orderBy("rating", "desc")

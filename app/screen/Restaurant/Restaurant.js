@@ -33,6 +33,9 @@ export default function Restaurant(props) {
         .get()
         .then((response) => {
           setTotalRestaurants(response.size);
+        })
+        .catch((er) => {
+          toastRef.current.show("Lo sentimos, error de conexión");
         });
 
       const resultRestaurant = [];

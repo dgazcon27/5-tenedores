@@ -27,6 +27,10 @@ export default function ListRestaurants(props) {
           onEndReached={handledLoadMore}
           ListFooterComponent={<FooterList isLoading={isLoading} />}
         />
+      ) : size(restaurants) == 0 ? (
+        <View style={styles.loaderRestaurant}>
+          <Text>Aun no se han registrado restaurantes</Text>
+        </View>
       ) : (
         <View style={styles.loaderRestaurant}>
           <ActivityIndicator size="large" color="#00a680" />
